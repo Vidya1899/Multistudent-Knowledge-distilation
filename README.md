@@ -95,11 +95,13 @@ The pre-trained weights for all the models can be obtained from the following li
 |Student 2 - GoogleNet|    73.21%        |
 |Model Selector with Students  | 79.67%  |
 
-![](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results1itu.png)
-
-![](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results2itu.png)
+<p align="center">
+<img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results1itu.png" alt="alt text" width="550" height="250">
+<img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results2itu.png" alt="alt text" width="550" height="250">
+</p>
 
 # Compression
+
 |    Compression of individual student Models | No. of parameters| Space Consumed| MAC  |
 |:-------------------------------------------:|:----------------:|:-------------:|:----:|
 |                 DenseNet121                 |   87.30%         |   68.40%      | 21%  |
