@@ -4,11 +4,16 @@ Among these the knowledge distillation, is a general purpose technique that at f
 
 ![Knowledge distilation Strucutre](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/Knowledge%20distilation%20structure.png)
 
+For distilling the learned knowledge we use Logits (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.
+
+
+![loss](https://miro.medium.com/max/455/1*yJD5529FbmtbZ-GC25_ITw.png)
+
+
 # Proposed architecture
 ![proposed](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/MS.png)
-
  
-
+ 
 # Dataset
 
 The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
