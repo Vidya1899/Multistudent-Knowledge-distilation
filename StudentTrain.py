@@ -139,7 +139,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 resnet = mod.resnetModel()
 resnet.to(device) 
 resnet.load_state_dict(torch.load('teacher.pth'))
-print("Loaded The model ------>")
+print("Loaded The model ------>  ")
 
 if args.model ==1:
     modelName = 'densenetV2.pth'
