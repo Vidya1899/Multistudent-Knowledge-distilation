@@ -30,8 +30,14 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
 ![resnet50-meta](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/resnetmeta.png)
 
 
-# Training the Teacher
 
+# Training the Teacher
+ 
+ **Installing dependencies**
+ ```bat
+ pip install -r requirements.txt
+ ```
+ 
 ```bat
    python teacherTrain.py 
 ```
