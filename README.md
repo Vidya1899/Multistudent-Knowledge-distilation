@@ -25,24 +25,19 @@ The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6
 The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.
 
 ![Dataset](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/cifar10.png)
-
+**Installing dependencies**
+ ```bat
+ pip install -r requirements.txt
+ ```
 # Teacher - Resnet50
 
 ResNet, short for Residual Networks is a classic neural network used as a backbone for many computer vision tasks.The fundamental breakthrough with ResNet was it allowed us to train extremely deep neural networks with 150+layers successfully. Prior to ResNet training very deep neural networks was difficult due to the problem of vanishing gradients.This problem was addressed using the concept of skip connections.
 
 ![resnet50-meta](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/resnetmeta.png)
 
-
-
-# Training the Teacher
- 
- **Installing dependencies**
- ```bat
- pip install -r requirements.txt
- ```
- 
+ **Training the Teacher**
 ```bat
-   python teacherTrain.py 
+python teacherTrain.py 
 ```
 # Student Models
 
@@ -58,21 +53,23 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
  
 * To train DenseNet using Knowledge Distilation 
 ```bat
-   python StudentTrain.py --model 1
+python StudentTrain.py --model 1
 ```
 or 
 
 * To train GoogleNet using Knowledge Distilation 
 ```bat
-   python StudentTrain.py --model 2
+python StudentTrain.py --model 2
 ```
 
 
 # Model Selector
-Model Selector plays a fudametal role in identifying which student model will give the est accuracy for a given image data. So, the role of the model selector is to extract the features from the input image data and select the corresponding student model which will provide the best estimation. We chose a 3 Layer CNN architecture for performing the model selection by carrying out empherical studies on the data distribution. The empherical studies carried out reveals that a signle or two layered CNN (with or without batch normalisation) perform poorly. We then experimented with a 3 and 4 layer CNN with and without batch normalisation and we observed that 3 Layer CNN without batch normalisation also performs poorly
+
+Model Selector plays a fudametal role in identifying which student model will give the best accuracy for a given image data. So, the role of the model selector is to extract the features from the input image data and select the corresponding student model which will provide the best estimation.
+We chose a 3 Layer CNN architecture for performing the model selection by carrying out empherical studies on the data distribution. The empherical studies carried out reveals that a signle or two layered CNN (with or without batch normalisation) perform poorly. We then experimented with a 3 and 4 layer CNN with and without batch normalisation and we observed that 3 Layer CNN without batch normalisation also performs poorly.
 
 ```bat
-   python trainSelector.py 
+python trainSelector.py 
 ```
 
 # Inference 
@@ -80,7 +77,10 @@ Model Selector plays a fudametal role in identifying which student model will gi
 ```bat
    python inference.py 
 ```
-
+# Pretrained models
+The pre-trained weights for all the models can be obtained from the following link.
+      [Google Drive](https://drive.google.com/drive/folders/1H7O6QfoPICf9LThpHEYw1IBsWcbip1YO?usp=sharing)
+      
 # Results 
 
 |            Model    |    Accuraccy     |
