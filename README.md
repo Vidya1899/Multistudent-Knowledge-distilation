@@ -59,9 +59,14 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
 
 selector model - why , how para and model 
 
-steps to train 
+```bat
+   python trainSelector.py 
+```
 
-inferencing 
+# Inference 
 
+```bat
+   python inference.py 
+```
 
 results 
