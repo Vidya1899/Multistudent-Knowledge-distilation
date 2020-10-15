@@ -1,3 +1,4 @@
+# importing All the required library 
 import time
 import copy
 import numpy as np
@@ -15,6 +16,11 @@ from torch import nn, optim
 from collections import  OrderedDict
 import sys
 
+'''
+The Loss funtion for train Student using knowledge Distilation 
+The Alpha and Temperature are the hyperparameters for knowledge distilation ,
+Default values for T is taken as 7 and Alpha is 0.5
+'''
 def loss_kd(outputs, labels, teacher_outputs, temparature, alpha):
     T = temparature
     soft_target = F.softmax(teacher_outputs/T, dim=1)
@@ -26,6 +32,10 @@ def loss_kd(outputs, labels, teacher_outputs, temparature, alpha):
     loss = loss_soft_target * T * T + alpha * loss_hard_target
     return loss
 
+'''
+    The get_ouputs functions generate teachers output for all the inputs and returns the list containing ouputs 
+    for each batch.
+'''
 def get_outputs(model, dataloader):
    '''
    Used to get the output of the teacher network
@@ -37,7 +47,7 @@ def get_outputs(model, dataloader):
            output_batch = model(inputs_batch).data.cpu().numpy()
            outputs.append(output_batch)
    return outputs
-
+# Function to Train the model for 1 epoch
 def train_kd(model,teacher_out, optimizer, loss_kd, dataloader, temparature, alpha):
     model.train()
     running_loss = 0.0
@@ -60,6 +70,7 @@ def train_kd(model,teacher_out, optimizer, loss_kd, dataloader, temparature, alp
     epoch_acc = running_corrects.double() / len(trainset)
     print('Train Loss: {:.4f} Acc: {:.4f}'.format(epoch_loss, 
               epoch_acc))
+#Function to evaluate the trained model.
 def eval_kd(model,teacher_out, optimizer, loss_kd, dataloader, temparature, alpha):
    model.eval()
    running_loss = 0.0
