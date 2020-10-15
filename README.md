@@ -12,7 +12,8 @@ For distilling the learned knowledge we use Logits (the inputs to the final soft
 
 # Proposed architecture
 ![proposed](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/MS.png)
- 
+Different student architectures perform better on different distributions data. A teacher can’t effectively distill it’s knowledge to students for all the data distribution. To alleviate this shortcoming, we introduce *multi-student  knowledge distillation*, which employs a multiple student model to bridge the gap between the data distribution and the student meta architecture. To the best of our knowledge we are the first group to attempt multi-student KD framework.
+
  
 # Dataset
 
