@@ -112,4 +112,7 @@ The pre-trained weights for all the models can be obtained from the following li
 |         DenseNet121+ Model Selector       |   85.17%         |    66%        | 
 |         GoogleNet+  Model Selector        |   74.15%         |   72.23%      | 
 
+|     Overall Compression (If the Model selector fails)   | No. of parameters| Space Consumed| 
+|:-------------------------------------------------------:|:----------------:|:-------------:|
+|Teacher(ResNet-50)+DenseNet-121+GoogleNet+ Model Selector|      61.40%      |     40.61%    |
 
