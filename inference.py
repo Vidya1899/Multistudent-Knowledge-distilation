@@ -17,6 +17,7 @@ import math
 import torch
 from torch.autograd import Variable
 import models as mod
+
 transform = transforms.Compose([transforms.Resize((224,224)),
                             transforms.ToTensor(),
                             transforms.Normalize([0.485,0.456,  
@@ -31,17 +32,12 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 
-student1 = torch.hub.load('pytorch/vision:v0.6.0', 'densenet121').to(device)
-for param in student1.parameters():
-   param.requires_grad = False
-student1 =nn.Sequential(student1,nn.Linear(1000,10),nn.Softmax())
+
+student1 = mod.densenet()
 student1.to(device)
 student1.load_state_dict(torch.load('densenetV2.pth'))
 
-student2=torch.hub.load('pytorch/vision:v0.6.0','googlenet',pretrained=True)
-for param in student2.parameters():
-   param.requires_grad = False
-student2=nn.Sequential(student2,nn.Linear(1000,10),nn.Softmax())
+student2 = mod.googlenet()
 student2.to(device)
 student2.load_state_dict(torch.load('googlenetV2.pth'))
 

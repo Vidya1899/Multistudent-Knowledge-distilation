@@ -14,6 +14,12 @@ import torchvision.models as models
 from torch import nn, optim
 from collections import  OrderedDict
 import sys
+import models as mod
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument("--model", help="increase output verbosity",type = int)
+args = parser.parse_args()
 
 def loss_kd(outputs, labels, teacher_outputs, temparature, alpha):
     T = temparature
@@ -118,31 +124,23 @@ len_trainset = len(trainset)
 len_valset = len(valset)
 classes = ('plane', 'car', 'bird', 'cat','deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-resnet = models.resnet50(pretrained=True)
-for param in resnet.parameters():
-   param.requires_grad = False
-num_ftrs = resnet.fc.in_features
-resnet.fc = nn.Linear(num_ftrs, 10)
-resnet = resnet.to(device)
+
+resnet = mod.resnetModel()
 resnet.to(device) 
-resnet.load_state_dict(torch.load('teachertry.pth'))
+resnet.load_state_dict(torch.load('teacher.pth'))
 print("Loaded The model ------>")
 
-modelName = 'densenet.pt'
-model = torch.hub.load('pytorch/vision:v0.6.0', 'densenet121').to(device)
-for param in model.parameters():
-   param.requires_grad = False
-model =nn.Sequential(model,nn.Linear(1000,10),nn.Softmax())
-model.to(device)
-student = train_and_evaluate_kd(model,resnet,optim.Adam(model.parameters()),loss_kd,trainloader,valloader,7,0.5,10)
-torch.save(student.load_state_dict(),modelName)
+if args.model ==1:
+    modelName = 'densenetV2.pth'
+    print("training Densenet Student:")
+    model = mod.densenet()
+    model.to(device)
+    student = train_and_evaluate_kd(model,resnet,optim.Adam(model.parameters()),loss_kd,trainloader,valloader,7,0.5,10)
+    torch.save(student.load_state_dict(),modelName,_use_new_zipfile_serialization=False)
 
-
-modelName = 'googlenet.pt'
-student2=torch.hub.load('pytorch/vision:v0.6.0','googlenet',pretrained=True)
-for param in student2.parameters():
-   param.requires_grad = False
-student2=nn.Sequential(student2,nn.Linear(1000,10),nn.Softmax())model.to(device)
-student = train_and_evaluate_kd(student2,resnet,optim.Adam(model.parameters()),loss_kd,trainloader,valloader,7,0.5,10)
-torch.save(student.load_state_dict(),modelName)
+elif args.model ==2:
+    modelName = 'googlenetV2.pth'
+    student2 = mod.googlenet()
+    student = train_and_evaluate_kd(student2,resnet,optim.Adam(model.parameters()),loss_kd,trainloader,valloader,7,0.5,10)
+    torch.save(student.load_state_dict(),modelName,_use_new_zipfile_serialization=False)
 

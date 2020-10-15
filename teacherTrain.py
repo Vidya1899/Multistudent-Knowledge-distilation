@@ -13,8 +13,7 @@ import torch.nn as nn
 import torchvision.models as models
 from torch import nn, optim
 from collections import  OrderedDict
-
-
+import models as mod
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 criterion = nn.CrossEntropyLoss()
 def train_and_evaluate(model, trainloader, valloader, criterion, len_trainset, len_valset, num_epochs=25):
@@ -84,12 +83,7 @@ def main():
     classes = ('plane', 'car', 'bird', 'cat','deer', 'dog', 'frog', 'horse', 'ship', 'truck')
     device = ("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    resnet = models.resnet50(pretrained=True)
-    for param in resnet.parameters():
-        param.requires_grad = False
-    num_ftrs = resnet.fc.in_features
-    resnet.fc = nn.Linear(num_ftrs, 10)
-    resnet = resnet.to(device)
+    resnet = mod.resnetModel()
     resnet.to(device) 
     resnet_teacher = train_and_evaluate(resnet,trainloader,valloader,criterion,len_trainset,len_valset,12) 
     torch.save(resnet_teacher.state_dict(),'teacher.pt')
