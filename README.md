@@ -96,7 +96,7 @@ The pre-trained weights for all the models can be obtained from the following li
 |Model Selector with Students  | 79.67%  |
 
 <p align="center">
-<img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results1itu.png" alt="alt text" width="550" height="250">
+<img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results1itu.png" alt="alt text" width="750" height="350">
 <img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results2itu.png" alt="alt text" width="550" height="250">
 </p>
 
