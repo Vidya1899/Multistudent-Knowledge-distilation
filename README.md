@@ -1,8 +1,6 @@
-## Multi Context based-Knowledge-distilation
-# Knowledge Distillation-(S-T) Student Teacher Learning Framework
-A large (teacher) pre-trained network is used to train a smaller (student) network. However, different student architectures can perform better on different distributions data. A teacher can’t effectively distill it’s knowledge to students for all the data distribution. 
-To alleviate this shortcoming, we introduce multi-student  knowledge distillation, which employs a multiple student model to bridge the gap between the data distribution and the student meta architecture. To the best of our knowledge we are the first group to attempt multi-student KD framework.
-The key idea is to use soft probabilities (or ‘logits’) of a larger “teacher network” to supervise a smaller “student” network, in addition to the available class labels. These soft probabilities reveal more information than the class labels alone, and can purportedly help the student network learn better.
+# Multi Context based-Knowledge-distilation
+
+Among these the knowledge distillation, is a general purpose technique that at first glance is widely applicable and complements all other ways of compressing neural networks . The key idea is to use soft probabilities (or ‘logits’) of a larger “teacher network” to supervise a smaller “student” network, in addition to the available class labels. These soft probabilities reveal more information than the class labels alone, and can purportedly help the student network learn better.
 
 ![Knowledge distilation Strucutre](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/Knowledge%20distilation%20structure.png)
 
@@ -33,16 +31,26 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
 ```
 # Student Models
 
-**student 1 - DenseNet121**
+**Student 1 - DenseNet121**
   
    DenseNet (Dense Convolutional Network) is an architecture that focuses on making the deep learning networks go even deeper, but at the same time making them more efficient to    train, by using shorter connections between the layers. DenseNet is a convolutional neural network where each layer is connected to all other layers that are deeper in the      network, that is, the first layer is connected to the 2nd, 3rd, 4th and so on, the second layer is connected to the 3rd, 4th, 5th and so on
 ![DenseNet](https://miro.medium.com/max/875/1*B0urIaJjCIjFIz1MZOP5YQ.png)
 
 
-**student 2 - GoogleNet**
+**Student 2 - GoogleNet**
+    The GoogleNet Architecture is 22 layers deep, with 27 pooling layers included. There are 9 inception modules stacked linearly in total. The ends of the inception modules are     connected to the global average pooling layer.
+![googlenet](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/googlenet.jpg)
  
+* To train DenseNet using Knowledge Distilation 
+```bat
+   python StudentTrain.py --model 1
+```
 
-steps to train student using KD 
+* To train GoogleNet using Knowledge Distilation 
+```bat
+   python StudentTrain.py --model 2
+```
+
 
 selector model - why , how para and model 
 
