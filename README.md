@@ -15,7 +15,7 @@ For distilling the learned knowledge we use Logits (the inputs to the final soft
 <img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/MS.png" alt="alt text" width="550" height="250">
 </p>
 
-Different student architectures perform better on different distributions data. A teacher can’t effectively distill it’s knowledge to students for all the data distribution. To alleviate this shortcoming, we introduce *multi-student  knowledge distillation*, which employs a multiple student model to bridge the gap between the data distribution and the student meta architecture. To the best of our knowledge we are the first group to attempt multi-student KD framework.
+Different student architectures perform better on different distributions data. A teacher can’t effectively distill it’s knowledge to students for all the data distribution. To alleviate this shortcoming, we introduce **multi-student  knowledge distillation**, which employs a multiple student model to bridge the gap between the data distribution and the student meta architecture. To the best of our knowledge we are the first group to attempt multi-student KD framework.
 
  
 # Dataset
@@ -60,6 +60,7 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
 ```bat
    python StudentTrain.py --model 1
 ```
+or 
 
 * To train GoogleNet using Knowledge Distilation 
 ```bat
@@ -67,7 +68,8 @@ ResNet, short for Residual Networks is a classic neural network used as a backbo
 ```
 
 
-selector model - why , how para and model 
+# Model Selector
+Model Selector plays a fudametal role in identifying which student model will give the est accuracy for a given image data. So, the role of the model selector is to extract the features from the input image data and select the corresponding student model which will provide the best estimation. We chose a 3 Layer CNN architecture for performing the model selection by carrying out empherical studies on the data distribution. The empherical studies carried out reveals that a signle or two layered CNN (with or without batch normalisation) perform poorly. We then experimented with a 3 and 4 layer CNN with and without batch normalisation and we observed that 3 Layer CNN without batch normalisation also performs poorly
 
 ```bat
    python trainSelector.py 
