@@ -2,12 +2,16 @@
 
 Knowledge Distillation(KD) is a general purpose technique that at first glance is widely applicable and complements all other ways of compressing neural networks . The key idea is to use soft probabilities (or ‘logits’) of a larger “teacher network” to supervise a smaller “student” network, in addition to the available class labels. These soft probabilities reveal more information than the class labels alone, and can purportedly help the student network learn better.
 
-![Knowledge distilation Strucutre](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/Knowledge%20distilation%20structure.png)
+<p align="center">
+<img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/Knowledge%20distilation%20structure.png" alt="alt text" >
+</p>
 
 For distilling the learned knowledge we use Logits (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.
 
+<p align="center">
+<img src="https://miro.medium.com/max/455/1*yJD5529FbmtbZ-GC25_ITw.png" alt="alt text" >
+</p>
 
-![loss](https://miro.medium.com/max/455/1*yJD5529FbmtbZ-GC25_ITw.png)
 
 
 # Proposed architecture
@@ -25,6 +29,7 @@ The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6
 The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class.
 
 ![Dataset](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/cifar10.png)
+
 **Installing dependencies**
  ```bat
  pip install -r requirements.txt
