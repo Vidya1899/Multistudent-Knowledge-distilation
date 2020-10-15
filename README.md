@@ -100,7 +100,7 @@ The pre-trained weights for all the models can be obtained from the following li
 <img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results2itu.png" alt="alt text" width="550" height="250">
 </p>
 
-# Compression
+# Compression with respect to teacher
 
 |    Compression of individual student Models | No. of parameters| Space Consumed| MAC  |
 |:-------------------------------------------:|:----------------:|:-------------:|:----:|
