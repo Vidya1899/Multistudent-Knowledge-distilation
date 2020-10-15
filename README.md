@@ -69,4 +69,19 @@ selector model - why , how para and model
    python inference.py 
 ```
 
-results 
+# Results 
+
+|            Model    |    Accuraccy     |
+|:-------------------:|:----------------:|
+|Teacher ResNet50     |     81%          |
+|Student 1 - DenseNet |    74.19%        |
+|Student 2 - GoogleNet|    73.21%        |
+|Model Selector with Students  | 79.67%  |
+
+![](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results1itu.png)
+
+![](https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/results2itu.png)
+
+
+
+
