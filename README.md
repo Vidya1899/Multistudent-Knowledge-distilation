@@ -2,6 +2,15 @@
 
 Knowledge Distillation(KD) is a general purpose technique that at first glance is widely applicable and complements all other ways of compressing neural networks . The key idea is to use soft probabilities (or ‘logits’) of a larger “teacher network” to supervise a smaller “student” network, in addition to the available class labels. These soft probabilities reveal more information than the class labels alone, and can purportedly help the student network learn better.
 
+## Links
+
+|         Content     |       LINK       |
+|:-------------------:|:----------------:|
+|Pretrained Model     |    [Google Drive](https://drive.google.com/drive/folders/1H7O6QfoPICf9LThpHEYw1IBsWcbip1YO?usp=sharing)     |
+|Documents            |    [Google Drive](https://drive.google.com/drive/folders/1rK47DP__vzz3HqYB1uxVHN9pJC3yOtlS?usp=sharing)       |
+|Demo Video           |    [Youtube](https://youtu.be/8QzO50TosEM)       |
+
+
 <p align="center">
 <img src="https://github.com/glthrivikram/Multistudent-Knowledge-distilation/blob/main/images/Knowledge%20distilation%20structure.png" alt="alt text" >
 </p>
